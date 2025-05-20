@@ -25,5 +25,12 @@ jobs:
       - name: Run tests
         run: npm test  # Cambia esto si tu script de test tiene otro nombre
       - name: Run linter
-        run: npm run lint  # Cambia esto si tu script de lint tiene otro nombre
-        
+        run: npm run lint:fix  # Cambia esto si tu script de lint tiene otro nombre
+      # create a PR with the lint changes
+      - name: Create PR for lint changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email ""
+          git add .
+          git commit -m "fix: lint changes"
+          git push origin HEAD:master
