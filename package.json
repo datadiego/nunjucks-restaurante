@@ -4,7 +4,7 @@
   "description": "",
   "main": "menu.js",
   "scripts": {
-    "test": "node vitest",
+    "test": "npx vitest",
     "build": "node build.js"
   },
   "keywords": [],
@@ -13,5 +13,8 @@
   "type": "module",
   "dependencies": {
     "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "vitest": "^3.1.4"
   }
 }
