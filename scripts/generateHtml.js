@@ -14,12 +14,12 @@ export function createHTMLFile (template, data, outputFile) {
   console.log(`Archivo ${outputFile} generado con éxito.`)
 }
 
-export function buildAssets() {
+export function buildAssets () {
   createDirectoryIfNotExists('./dist/imgs')
   copyDirectory('./imgs', './dist/imgs')
-  createHTMLFile("views/menu.njk", { menu }, './dist/index.html')
-  createHTMLFile("views/menu.njk", { menu }, './dist/menu.html')
-  createHTMLFile("views/about.njk", {}, './dist/about.html')
+  createHTMLFile('views/menu.njk', { menu }, './dist/index.html')
+  createHTMLFile('views/menu.njk', { menu }, './dist/menu.html')
+  createHTMLFile('views/about.njk', {}, './dist/about.html')
   const cssFile = 'style.css'
   const outputCssFile = './dist/style.css'
   fs.copyFileSync(cssFile, outputCssFile)
