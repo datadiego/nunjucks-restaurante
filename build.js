@@ -10,7 +10,7 @@ if (!fs.existsSync('./dist')) {
 if (!fs.existsSync('./dist/imgs')) {
   fs.mkdirSync('./dist/imgs')
 }
-const imgsDir = "./imgs"
+const imgsDir = './imgs'
 const outputImgsDir = './dist/imgs'
 fs.readdirSync(imgsDir).forEach(file => {
   const srcPath = `${imgsDir}/${file}`
