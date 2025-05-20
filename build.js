@@ -1,21 +1,23 @@
 import {menu} from './menu.js';
 import nunjucks from 'nunjucks';
 import fs from 'fs';
-
-function generateHTML(template, data) {
-    const templateContent = fs.readFileSync(template, 'utf-8');
-    const html = nunjucks.renderString(templateContent, data);
-    return html;
-}
-function createHTMLFile(template, data, outputFile) {
-    const html = generateHTML(template, data);
-    fs.writeFileSync(outputFile, html, 'utf-8');
-    console.log(`Archivo ${outputFile} generado con éxito.`);
-}
+import { createHTMLFile } from './scripts/generateHtml.js';
 
 if (!fs.existsSync('./dist')) {
     fs.mkdirSync('./dist');
 }
+
+if (!fs.existsSync('./dist/imgs')) {
+    fs.mkdirSync('./dist/imgs');
+}
+const imgsDir = './imgs';
+const outputImgsDir = './dist/imgs';
+fs.readdirSync(imgsDir).forEach(file => {
+    const srcPath = `${imgsDir}/${file}`;
+    const destPath = `${outputImgsDir}/${file}`;
+    fs.copyFileSync(srcPath, destPath);
+});
+
 const menuTemplate = './views/menu.njk';
 const aboutTemplate = './views/about.njk';
 nunjucks.configure("views",{ autoescape: true });
@@ -23,7 +25,6 @@ nunjucks.configure("views",{ autoescape: true });
 createHTMLFile(menuTemplate, { menu }, './dist/index.html');
 createHTMLFile(menuTemplate, { menu }, './dist/menu.html');
 createHTMLFile(aboutTemplate, {}, './dist/about.html');
-
 
 const cssFile = 'style.css';
 const outputCssFile = './dist/style.css';
