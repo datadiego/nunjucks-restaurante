@@ -22,10 +22,8 @@ jobs:
           node-version: '22.12'  # Cambia a la versión de Node.js que necesites
       - name: Instalar dependencias
         run: npm install
-      - name: Generar archivos estáticos
-        run: npm run build  # Cambia esto si tu script de build tiene otro nombre
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Cambia esto si tu build genera otra carpeta
+      - name: Run tests
+        run: npm test  # Cambia esto si tu script de test tiene otro nombre
+      - name: Run linter
+        run: npm run lint  # Cambia esto si tu script de lint tiene otro nombre
+        
