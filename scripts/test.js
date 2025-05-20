@@ -1,2 +1,2 @@
-const nombre = 'diego'
-console.log('hola ' + nombre)
+const nombre = "diego";
+console.log('hola ' + nombre);
