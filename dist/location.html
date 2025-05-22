@@ -13,12 +13,26 @@
      crossorigin=""></script>
 </head>
 <header>
-  {% include "navbar.njk" %}
+  <a href="index.html">Menu</a>
+<a href="about.html">Sobre nosotros</a>
+<a href="location.html">Donde encontrarnos</a>
 </header>
 <body>
   <main>
-    {% block content %}
-    {% endblock %}
+    
+  <h1>Location</h1>
+  <p>Welcome to the location page!</p>
+  <div id="map"></div>
+
+  <script>
+    37.2063151,-3.630192
+    var map = L.map('map').setView([37.2063151, -3.630192], 17);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+  </script>
+
   </main>
 </body>
 </html>

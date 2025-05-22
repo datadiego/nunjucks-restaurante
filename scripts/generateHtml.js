@@ -2,6 +2,7 @@ import fs from 'fs'
 import nunjucks from 'nunjucks'
 import { createDirectoryIfNotExists, copyDirectory } from './utils.js'
 import { menu } from '../menu.js'
+import { create } from 'domain'
 export function generateHTML (template, data) {
   const templateContent = fs.readFileSync(template, 'utf-8')
   const html = nunjucks.renderString(templateContent, data)
@@ -20,6 +21,7 @@ export function buildAssets () {
   createHTMLFile('views/menu.njk', { menu }, './dist/index.html')
   createHTMLFile('views/menu.njk', { menu }, './dist/menu.html')
   createHTMLFile('views/about.njk', {}, './dist/about.html')
+  createHTMLFile('views/location.njk', {}, './dist/location.html')
   const cssFile = 'style.css'
   const outputCssFile = './dist/style.css'
   fs.copyFileSync(cssFile, outputCssFile)

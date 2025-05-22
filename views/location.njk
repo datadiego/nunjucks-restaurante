@@ -1,0 +1,15 @@
+{% extends "base.njk" %}
+
+{% block content %}
+  <h1>Location</h1>
+  <p>Welcome to the location page!</p>
+  <div id="map"></div>
+
+  <script>
+    var map = L.map('map').setView([37.2063151, -3.630192], 17);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+  </script>
+{% endblock %}
